@@ -1,0 +1,68 @@
+:root {
+  background-color: #121212;
+}
+
+* {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  color: #E0E0E0;
+}
+
+a {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+nav {
+  display: flex;
+}
+
+nav a {
+  margin: 0px 10px;
+}
+
+nav a:hover {
+  color: #B0B0B0;
+}
+
+main {
+  position: relative;
+}
+
+.posts ul {
+  list-style-type: none;
+}
+
+.posts li h1, li h2 {
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+.posts li h1 {
+  color: #E0E0E0;
+}
+
+.posts li:hover {
+  color: #B0B0B0;
+}

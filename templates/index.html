@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="posts">
+  <ul>
+    {% set posts = get_section(path="posts/_index.md") %}
+    {% for post in posts.pages %}
+    <li>
+      <h2>{{ post.date | date(format="%d/%m/%Y") }}</h2>
+      <a href="{{ post.permalink | safe }}"><h1>{{ post.title }}</h1></a>
+    </li>
+    {% endfor %}
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+    <li><h2>ONE</h2></li>
+  </ul>
+</div>
+{% endblock content %}
