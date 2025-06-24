@@ -12,7 +12,16 @@ body {
 }
 
 a {
+  color: #E0E0E0;
   text-decoration: none;
+  list-style-type: none;
+}
+
+a:hover {  
+  color: #B0B0B0;
+}
+
+ul {
   list-style-type: none;
 }
 
@@ -32,6 +41,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 1;
+  background-color: #121212;
+  /* border: 5px solid red; */
 }
 
 nav {
@@ -42,16 +53,12 @@ nav a {
   margin: 0px 10px;
 }
 
-nav a:hover {
-  color: #B0B0B0;
-}
-
 main {
-  position: relative;
-}
-
-.posts ul {
-  list-style-type: none;
+  z-index: 0;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  /* border: 5px solid red; */
 }
 
 .posts li h1, li h2 {
@@ -66,3 +73,35 @@ main {
 .posts li:hover {
   color: #B0B0B0;
 }
+
+.content {
+  width: 75%;
+  padding: 0px 20px;
+}
+
+.post-info {
+  text-align: center;
+}
+
+#post-name {
+  font-size: 75px;
+  /* border: 5px solid red; */
+}
+
+#post-date {
+  font-weight: lighter;
+  font-style: italic;
+  /* border: 5px solid red; */
+}
+
+.content h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.toc {
+  text-align: center;
+  width: 25%;
+  padding: 50px 20px;
+}
+
