@@ -1,6 +1,6 @@
 use poem::{Endpoint, Middleware};
 
-/// Middleware for admin authentication to special endpoints.
+/// Middleware for authentication to restricted endpoints.
 pub struct AdminMiddleware;
 
 // impl<E: Endpoint> Middleware<E> for AdminMiddleware {
