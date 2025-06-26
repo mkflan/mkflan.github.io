@@ -4,7 +4,7 @@
 <div class="content">
   <div class="post-info">
     <h1 id="post-name">{{ page.title }}</h1>
-    <p id="post-date">Published {{ page.date }}</p>
+    <p id="post-date">Published {{ page.date | date(format="%B %d, %Y")}}</p>
   </div>
   {{ page.content | safe }}
 </div>
