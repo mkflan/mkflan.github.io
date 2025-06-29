@@ -19,7 +19,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  list-style-type: none;
 }
 
 a:hover {  
@@ -36,6 +35,14 @@ h1 {
 
 h2 {
   font-size: 25px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-weight: italic;
 }
 
 header {
@@ -94,20 +101,26 @@ main {
   font-size: 75px;
 }
 
+/* TODO: how to position it directly under post name without the position and top "hack" */
 #post-date {
   font-weight: lighter;
-  font-style: italic;
   position: relative;
   top: -45px;
 }
 
-.content h1 {
+.content h1, .content h2 {
   text-align: center;
   font-weight: bold;
 }
 
-/* TODO: how to prevent it from scrolling? keep it fixed on the side. */
-/* maybe remove the `main` section and split into different div's without common parent? */ 
+.content code {
+  background-color: black;
+}
+
+/* TODO:
+   - center the content in the div
+   - prevent it from scrolling; keep it fixed on the side
+*/ 
 .toc {
   text-align: center;
   width: 25%;
