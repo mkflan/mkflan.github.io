@@ -3,6 +3,10 @@
    text color: #E0E0E0 
    hover color: #B0B0B0 */
 
+/* TODO: how to group text written together in Markdown without newlines between each section
+         when multi-line codeblocks are present?
+ */
+
 :root {
   background-color: #121212;
 }
@@ -43,6 +47,17 @@ strong {
 
 em {
   font-weight: italic;
+}
+
+code, pre {
+  background-color: black !important;
+  border-radius: 10px;
+  padding: 0px 5px;
+}
+
+code:not(pre > code) {
+  padding: 0px 5px;
+  border-radius: 10px;
 }
 
 header {
@@ -113,10 +128,6 @@ main {
   font-weight: bold;
 }
 
-.content code {
-  background-color: black;
-}
-
 /* TODO:
    - center the content in the div
    - prevent it from scrolling; keep it fixed on the side
@@ -125,6 +136,14 @@ main {
   text-align: center;
   width: 25%;
   padding: 50px 20px;
+}
+
+.footnotes ol li {
+  font-size: 20px;
+}
+
+.footnotes ol li a {
+  text-decoration: underline;  
 }
 
 /* .publish-form { */
