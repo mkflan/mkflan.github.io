@@ -1,15 +1,14 @@
-# The URL the site will be built for
-base_url = "http://0.0.0.0:3000"
-
-# Whether to automatically compile all Sass files in the sass directory
-compile_sass = false
-
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
+base_url = "http://0.0.0.0:3000" # The URL the site will be built for
+compile_sass = false             # Whether to automatically compile all Sass files in the sass directory
+build_search_index = false       # Whether to build a search index to be used later on by a JavaScript library
+generate_sitemap = false
+generate_robots_txt = false
 
 [markdown]
-highlight_code = true   # Enable syntax highlighting for code blocks
-bottom_footnotes = true # Place footnotes at the bottom, with back references
+highlight_code = true        # Enable syntax highlighting for code blocks
+bottom_footnotes = true      # Place footnotes at the bottom, with back references
+highlight_theme = "ayu-dark" # Set the code block highlighting theme
+# insert_anchor_links = "right"
 
 [extra]
 # Put all your custom variables here

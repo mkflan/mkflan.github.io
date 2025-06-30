@@ -3,9 +3,7 @@
    text color: #E0E0E0 
    hover color: #B0B0B0 */
 
-/* TODO: how to group text written together in Markdown without newlines between each section
-         when multi-line codeblocks are present?
- */
+/* TODO: fix displaying weird characters where em dash and arrows are supposed to be */
 
 :root {
   background-color: #121212;
@@ -21,7 +19,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: #E0E0E0;
   text-decoration: none;
 }
 
@@ -51,62 +49,91 @@ em {
 
 code, pre {
   background-color: black !important;
-  border-radius: 10px;
-  padding: 0px 5px;
+  border-radius: 15px;
+  font-family: monospace;
+}
+
+pre {
+  padding: 10px;
 }
 
 code:not(pre > code) {
   padding: 0px 5px;
-  border-radius: 10px;
+}
+
+/* TODO: there must be a better way to achieve the two things below. */
+/* Hacky solution for keeping multi-line codeblocks near the related text above them. */
+p ~ pre {
+  position: relative;
+  top: -25px;
+  margin-bottom: -50px;
+}
+
+/*
+  Hacky solution for adding separation between a multi-line codeblock with
+  related text before it, but unrelated text after it.
+
+  TODO: figure out how to not apply this for <p>'s that have a <pre> after them but an <h2> before them
+  TODO: it impacts places it shouldn't
+*/
+p ~ pre ~ p::before {
+  content: "\A";
+  white-space: pre;  
+}
+
+sup > a {
+  text-decoration: underline;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
   position: sticky;
   top: 0;
-  z-index: 1;
   background-color: #121212;
 }
-
-/* nav { */
-  /* padding: 0px 10px; */
-  /* border: 2px solid; */
-  /* border-radius: 10px; */
-/* } */
 
 nav a {
   display: inline-block;
   margin: 0px 10px;
 }
 
-main {
-  z-index: 0;
-  display: flex;
-  padding: 20px;
-  overflow-x: hidden;
-  /* border: 5px solid red; */
+header, .content {
+  padding: 0px 50px;
 }
 
-.posts li h1, li h2 {
+.posts li h1, .posts li h2 {
   display: inline-block;
   padding: 0px 10px;
 }
 
-.posts li h1 {
-  color: #E0E0E0;
-}
-
-.posts li:hover, li:hover a {
+.posts li:hover, .posts li:hover a {
   color: #B0B0B0;
 }
 
 .content {
   width: 75%;
-  padding: 0px 20px;
+  line-height: 1.25;
 }
+
+.toc {
+  position: fixed;
+  width: 25%;
+  /* padding: 50px 20px; */
+}
+
+.content, .toc {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.content h1, .content h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* TODO: move `.content h2` (subheadings) a bit further down from the text above them */
 
 .post-info {
   text-align: center;
@@ -123,19 +150,13 @@ main {
   top: -45px;
 }
 
-.content h1, .content h2 {
+#toc-name {
   text-align: center;
-  font-weight: bold;
 }
 
-/* TODO:
-   - center the content in the div
-   - prevent it from scrolling; keep it fixed on the side
-*/ 
-.toc {
-  text-align: center;
-  width: 25%;
-  padding: 50px 20px;
+footer {
+  border-top: 1px solid #E0E0E0;
+  margin-top: 50px;
 }
 
 .footnotes ol li {
