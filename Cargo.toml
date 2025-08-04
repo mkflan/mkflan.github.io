@@ -1,8 +1,0 @@
-[package]
-name = "backend"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-poem = { version = "3.1.11", features = ["static-files", "multipart"] }
-tokio = { version = "1.45.1", features = ["rt-multi-thread"] }

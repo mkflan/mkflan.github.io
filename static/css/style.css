@@ -63,12 +63,12 @@ code:not(pre > code) {
 
 /* TODO: there must be a better way to achieve the two things below. */
 /* Hacky solution for keeping multi-line codeblocks near the related text above them. */
-p ~ pre {
-  position: relative;
-  top: -25px;
-  margin-bottom: -50px;
-}
-
+/* p ~ pre { */
+  /* position: relative; */
+  /* top: -15px; */
+  /* margin-bottom: -50px; */
+/* } */
+  
 /*
   Hacky solution for adding separation between a multi-line codeblock with
   related text before it, but unrelated text after it.
@@ -76,10 +76,10 @@ p ~ pre {
   TODO: figure out how to not apply this for <p>'s that have a <pre> after them but an <h2> before them
   TODO: it impacts places it shouldn't
 */
-p ~ pre ~ p::before {
-  content: "\A";
-  white-space: pre;  
-}
+/* p ~ pre ~ p::before { */
+  /* content: "\A"; */
+  /* white-space: pre; */  
+/* } */
 
 sup > a {
   text-decoration: underline;
@@ -91,7 +91,12 @@ header {
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 1;
   background-color: #121212;
+}
+
+main {
+  z-index: 0;
 }
 
 nav a {
@@ -120,8 +125,20 @@ header, .content {
 .toc {
   position: fixed;
   width: 25%;
+  /* height: 100%; */
   /* padding: 50px 20px; */
+  text-align: center;
+  /* border: 5px solid red; */
 }
+
+/* #toc-name { */
+  /* border: 5px solid red; */
+  /* text-align: center; */
+/* } */
+
+/* .toc ul li::before { */
+  /* content: "->"; */
+/* } */
 
 .content, .toc {
   display: inline-block;
@@ -154,24 +171,17 @@ header, .content {
   text-align: center;
 }
 
-footer {
+.footnotes {
   border-top: 1px solid #E0E0E0;
   margin-top: 50px;
 }
 
 .footnotes ol li {
-  font-size: 20px;
+  font-size: 15px;
+  /* box-sizing: border-box; */
+  /* border: 5px solid red; */
 }
 
 .footnotes ol li a {
   text-decoration: underline;  
 }
-
-/* .publish-form { */
-  /* display: block; */
-  /* text-align: center; */
-/* } */
-
-/* .post-publish { */
-  /* display: inline-block; */
-/* } */
