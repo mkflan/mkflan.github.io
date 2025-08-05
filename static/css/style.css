@@ -14,6 +14,10 @@
   font-weight: 400;
 }
 
+html {
+  scroll-padding-top: 150px;
+}
+
 body {
   color: #E0E0E0;
 }
@@ -29,6 +33,10 @@ a:hover {
 
 ul {
   list-style-type: none;
+}
+
+p:not(li > p) {
+  text-align: center;
 }
 
 h1 {
@@ -61,26 +69,6 @@ code:not(pre > code) {
   padding: 0px 5px;
 }
 
-/* TODO: there must be a better way to achieve the two things below. */
-/* Hacky solution for keeping multi-line codeblocks near the related text above them. */
-/* p ~ pre { */
-  /* position: relative; */
-  /* top: -15px; */
-  /* margin-bottom: -50px; */
-/* } */
-  
-/*
-  Hacky solution for adding separation between a multi-line codeblock with
-  related text before it, but unrelated text after it.
-
-  TODO: figure out how to not apply this for <p>'s that have a <pre> after them but an <h2> before them
-  TODO: it impacts places it shouldn't
-*/
-/* p ~ pre ~ p::before { */
-  /* content: "\A"; */
-  /* white-space: pre; */  
-/* } */
-
 sup > a {
   text-decoration: underline;
 }
@@ -97,6 +85,11 @@ header {
 
 main {
   z-index: 0;
+}
+
+main .content > h2 {
+  position: relative;
+  margin-top: 30px;
 }
 
 nav a {
@@ -125,20 +118,7 @@ header, .content {
 .toc {
   position: fixed;
   width: 25%;
-  /* height: 100%; */
-  /* padding: 50px 20px; */
-  text-align: center;
-  /* border: 5px solid red; */
 }
-
-/* #toc-name { */
-  /* border: 5px solid red; */
-  /* text-align: center; */
-/* } */
-
-/* .toc ul li::before { */
-  /* content: "->"; */
-/* } */
 
 .content, .toc {
   display: inline-block;
@@ -178,8 +158,7 @@ header, .content {
 
 .footnotes ol li {
   font-size: 15px;
-  /* box-sizing: border-box; */
-  /* border: 5px solid red; */
+  line-height: 0.25;
 }
 
 .footnotes ol li a {

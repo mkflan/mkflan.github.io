@@ -1,4 +1,3 @@
-target/
 content/posts/*
 !content/posts/_index.md
 public/
