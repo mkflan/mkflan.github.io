@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_url(path='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/4f95b5974a.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
-    <a href=""><h1>kai's blog</h1></a>
+    <a href="{{ get_url(path='') }}"><h1>kai's blog</h1></a>
 
     <nav>
-      <a><h2>about me</h2></a>
+      <a href="{{ get_url(path='aboutme.html') }}"><h2>about me</h2></a>
     </nav>
   </header>
 

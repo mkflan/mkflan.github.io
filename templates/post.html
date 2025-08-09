@@ -2,19 +2,19 @@
 
 {% block content %}
 <div class="content">
-  <div class="post-info">
-    <h1 id="post-name">{{ page.title }}</h1>
-    <p id="post-date">Published {{ page.date }}</p>
+  <div class="post-header">
+    <h1 class="larger">{{ page.title }}</h1>
+    <p><em>Published {{ page.date | date(format="%B %d, %Y")}}</em></p>
   </div>
   {{ page.content | safe }}
 </div>
 
 <div class="toc">
-  <h2>Table of Contents</h2>
+  <h2 id="toc-name">Table of Contents</h2>
   <ul>
   {% for h1 in page.toc %}
     <li>
-      <a href="{{ page.permalink | safe }}">{{ h1.title }}</a>
+      <a href="{{ h1.permalink | safe }}"><p>{{ h1.title }}</p></a>
     </li>
   {% endfor %}
   </ul>

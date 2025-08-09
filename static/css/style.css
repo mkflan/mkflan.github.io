@@ -1,5 +1,6 @@
 :root {
   background-color: #121212;
+  scroll-padding-top: 15vh;
 }
 
 * {
@@ -11,10 +12,34 @@ body {
   color: #E0E0E0;
 }
 
+p {
+  font-size: 20px;
+}
+
+/* Make sure footnote text is not center aligned. */
+p:not(li > p) {
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h1.larger {
+  font-size: 75px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
 a {
   color: #E0E0E0;
   text-decoration: none;
-  list-style-type: none;
+}
+
+a > p {
+  display: inline;
 }
 
 a:hover {  
@@ -25,83 +50,124 @@ ul {
   list-style-type: none;
 }
 
-h1 {
-  font-size: 50px;
+strong {
+  font-weight: bold;
 }
 
-h2 {
-  font-size: 25px;
+em {
+  font-weight: italic;
+}
+
+a, strong, em {
+  font-size: inherit;
+}
+
+code, pre {
+  background-color: black !important;
+  border-radius: 15px;
+  font-family: monospace;
+}
+
+pre {
+  padding: 10px;
+}
+
+code:not(pre > code) {
+  padding: 0px 5px;
+}
+
+sup > a {
+  text-decoration: underline;
 }
 
 header {
+  height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
   position: sticky;
   top: 0;
   z-index: 1;
   background-color: #121212;
-  /* border: 5px solid red; */
-}
-
-nav {
-  display: flex;
-}
-
-nav a {
-  margin: 0px 10px;
 }
 
 main {
   z-index: 0;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  /* border: 5px solid red; */
 }
 
-.posts li h1, li h2 {
+nav a {
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+header, .content {
+  padding: 0px 50px;
+}
+
+.posts li h1, .posts li h2 {
   display: inline-block;
   padding: 0px 10px;
 }
 
-.posts li h1 {
-  color: #E0E0E0;
-}
-
-.posts li:hover {
+.posts li:hover, .posts li:hover a {
   color: #B0B0B0;
 }
 
 .content {
   width: 75%;
-  padding: 0px 20px;
+  line-height: 1.25;
 }
 
-.post-info {
-  text-align: center;
+.toc {
+  position: fixed;
+  width: 25%;
 }
 
-#post-name {
-  font-size: 75px;
-  /* border: 5px solid red; */
+.content, .toc {
+  display: inline-block;
+  box-sizing: border-box;
 }
 
-#post-date {
-  font-weight: lighter;
-  font-style: italic;
-  /* border: 5px solid red; */
-}
-
-.content h1 {
+.content h1, .content h2 {
   text-align: center;
   font-weight: bold;
 }
 
-.toc {
-  text-align: center;
-  width: 25%;
-  padding: 50px 20px;
+.post-header {
+  margin-bottom: 25px;
 }
 
+.post-header h1 {
+  margin-bottom: 0;
+}
+
+#toc-name {
+  text-align: center;
+}
+
+.footnotes {
+  border-top: 1px solid #E0E0E0;
+  margin-top: 50px;
+}
+
+.footnotes ol li {
+  line-height: 0.25;
+}
+
+.footnotes ol li a {
+  text-decoration: underline;  
+}
+
+.about-content {
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.icons i {
+  font-size: 40px;
+}
