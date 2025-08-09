@@ -1,4 +1,4 @@
-base_url = "http://0.0.0.0:3000"         # The URL the site will be built for
+base_url = "https://mkflan.github.io"    # The URL the site will be built for
 compile_sass = false                     # Whether to automatically compile all Sass files in the sass directory
 build_search_index = false               # Whether to build a search index to be used later on by a JavaScript library
 generate_feeds = true                    # Generate feeds for the site
