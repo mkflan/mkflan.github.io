@@ -7,6 +7,7 @@
 
 :root {
   background-color: #121212;
+  scroll-padding-top: 15vh;
 }
 
 * {
@@ -14,17 +15,38 @@
   font-weight: 400;
 }
 
-html {
-  scroll-padding-top: 150px;
-}
-
 body {
   color: #E0E0E0;
+}
+
+p {
+  font-size: 20px;
+}
+
+/* Make sure footnote text is not center aligned. */
+p:not(li > p) {
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h1.larger {
+  font-size: 75px;
+}
+
+h2 {
+  font-size: 25px;
 }
 
 a {
   color: #E0E0E0;
   text-decoration: none;
+}
+
+a > p {
+  display: inline;
 }
 
 a:hover {  
@@ -35,24 +57,16 @@ ul {
   list-style-type: none;
 }
 
-p:not(li > p) {
-  text-align: center;
-}
-
-h1 {
-  font-size: 50px;
-}
-
-h2 {
-  font-size: 25px;
-}
-
 strong {
   font-weight: bold;
 }
 
 em {
   font-weight: italic;
+}
+
+a, strong, em {
+  font-size: inherit;
 }
 
 code, pre {
@@ -74,6 +88,7 @@ sup > a {
 }
 
 header {
+  height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,11 +100,6 @@ header {
 
 main {
   z-index: 0;
-}
-
-main .content > h2 {
-  position: relative;
-  margin-top: 30px;
 }
 
 nav a {
@@ -130,21 +140,12 @@ header, .content {
   font-weight: bold;
 }
 
-/* TODO: move `.content h2` (subheadings) a bit further down from the text above them */
-
-.post-info {
-  text-align: center;
+.post-header {
+  margin-bottom: 25px;
 }
 
-#post-name {
-  font-size: 75px;
-}
-
-/* TODO: how to position it directly under post name without the position and top "hack" */
-#post-date {
-  font-weight: lighter;
-  position: relative;
-  top: -45px;
+.post-header h1 {
+  margin-bottom: 0;
 }
 
 #toc-name {
@@ -157,10 +158,23 @@ header, .content {
 }
 
 .footnotes ol li {
-  font-size: 15px;
   line-height: 0.25;
 }
 
 .footnotes ol li a {
   text-decoration: underline;  
+}
+
+.about-content {
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.icons i {
+  font-size: 40px;
 }
