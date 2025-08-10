@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://mkflan.github.io/css/style.css">
+  <script src="https://kit.fontawesome.com/4f95b5974a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <a href="https://mkflan.github.io"><h1>kai's blog</h1></a>
+
+    <nav>
+      <a href="https://mkflan.github.io/aboutme.html"><h2>about me</h2></a>
+    </nav>
+  </header>
+
+  <main>
+    
+<div class="content">
+  <div class="post-header">
+    <h1 class="larger">Developing my Blog Website</h1>
+    <p><em>Published August 09, 2025</em></p>
+  </div>
+  <p>I have always entertained the idea of creating a blog website, but I never followed through on it. After more recent thought, I realized how great of an idea it was: it helps me track my progress, reflect on projects, improve my writing and communication skills, and allows me to explain what I have learned to others which could help improve my own understanding.</p>
+<h1 id="planning">Planning</h1>
+<p>My vision for the site was simple. I wanted a modern and minimalist user interface, and to be able to have my Markdown files transformed into HTML. I did not want to go overkill on what frameworks and libraries I would use as I wanted to keep everything simple; I only wanted to use what was absolutely necessary for my goals; if I found later on that I wanted something that the current setup could not fulfill, I could expand then.</p>
+<p>I settled with a static site generator named <a href="https://www.getzola.org/"><strong>Zola</strong></a>. A <strong>static site generator (SSG)</strong> is software that builds websites (HTML and CSS) from, most frequently, Markdown files. This is exactly what I wanted! I could write my Markdown files, upload the Markdown file to the site, and have it rendered as an HTML page.</p>
+<h1 id="styling-challenges">Styling Challenges</h1>
+<p>This project marked my first true endeavor into frontend web development, and my most extensive journey into CSS thus far. As a note, I only styled the website for large screen devices; I might style it for smaller viewports in the future.</p>
+<h2 id="the-header">The Header</h2>
+<p>The header consists of a singular <code>&lt;h1&gt;</code> and a <code>&lt;nav&gt;</code> element containing navigation links as anchors (<code>&lt;a&gt;</code>); I wanted to place the former to the left and the latter to the right. The solution to this was the <strong>flexbox</strong> layout method; flexbox is used to arrange items in one-dimension in either rows or columns. An element becomes a <strong>flex container</strong> when its <code>display</code> property is set to <code>flex</code>, which sets its inner display type<sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup> and makes children elements <strong>flex items</strong> that adhere to the flexbox specification<sup class="footnote-reference" id="fr-2-1"><a href="#fn-2">2</a></sup>. Flex containers have a main axis along which flex items are laid out; its orientation is determined by the <code>flex-direction</code> property. By default, the main axis of a flex container is horizontal, positioning children in source order from left to right, which is what I wanted. The main axis starts at a point known as the <strong>main start</strong> and ends at a point known as the <strong>main end</strong>. The <code>justify-content</code> content property allows the developer to specify how flex items should be placed along the main axis. The <code>space-between</code> value was exactly what I was looking for: it evenly spaces items, in source code order, starting at the main start and ending at the main end. In my situation, this means that the left edge of the <code>h1</code>'s box would be at the main start and the right edge of <code>&lt;nav&gt;</code>'s box would be at the main end.</p>
+<p>Now that the layout of the whole header was set, I turned my focus to the navigation section. The navigation anchors wrapped a singular <code>&lt;h2&gt;</code>. By default, the navigation anchors were stacked on top of each other; this was because <code>h2</code>'s default outer display type is <code>block</code>, which includes line breaks and overrides the behavior of anchor tags' default of <code>inline</code>. To solve this, I added a <code>display: inline-block</code> declaration in a <code>nav a</code> rule. <code>inline-block</code> acts as a compromise between <code>inline</code> and <code>block</code>: line breaks are not inserted and horizontal margins affect neighboring anchors.</p>
+<p>My final challenge was making the header "stick" to the top of the page. To do this, I had to learn more about how elements are laid out in relation to one another. My preliminary exploration into the box model and the <code>display</code> property only explained how elements are laid out individually, in isolation. CSS has a <code>position</code><sup class="footnote-reference" id="fr-3-1"><a href="#fn-3">3</a></sup> property, which allows you to escape the normal document flow and control how boxes are positioned in relation to other boxes. By default, every element has a <code>static</code> position, which puts them in their default positions in the normal document flow. Other options exist such as <code>relative</code>, which allows an element to be positioned relative to where it would normally be without affecting neighboring elements, and <code>fixed</code>, which keeps an element's position the same; exact positioning can be controlled using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties. For my scenario, the <code>sticky</code> position was the first part of the solution: <code>sticky</code> allows elements to act as if it were positioned relatively until a certain point where its position becomes fixed. I also had to add a <code>top: 0</code> declaration, which kept the header at the top of its block. To control the stacking of elements in relation to each other, I had to set the <code>z-index</code> property. Elements with a higher <code>z-index</code> overlay those with a lower one if both elements are in the same <strong>stacking context</strong>. Since <code>header</code> and <code>main</code> are in the same stacking context, I just had to set <code>header</code>'s <code>z-index</code> to a value higher than <code>main</code>'s (which was 0). Even after all of this, the main page content still overlapped with the header! I was stumped. It turns out that I had to set the <code>background-color</code> property of the <code>header</code> element. Wow, how simple. The background of all elements is transparent by default, so that explained why the content would visibly overlap. Setting <code>background-color</code> would make the background opaque. After setting <code>background-color</code> to the same color as the page, everything work as desired!</p>
+<h2 id="laying-out-the-page-for-posts">Laying out the page for posts</h2>
+<p>Perhaps the most important part was properly laying out the page for a post. I knew that I wanted to just include the post content and a table of contents on the right side. Laying these out proved a greater challenge than I initially thought.</p>
+<p>I split a post page into two <code>&lt;div&gt;</code>'s: one for the post content (class <code>content</code>) and one for the table of contents (class <code>toc</code>). I wanted the post content on the left and the table of contents on the right, with the content taking up a majority of the viewport width. I initially achieved the layout by making <code>&lt;main&gt;</code>, which was the parent of both of the divs, a flex container, but I found it challenging to fix the table of contents to the side of the viewport. The solution was to add a <code>display: inline-block</code> declaration for <code>.content</code> and <code>.toc</code>. But, I noticed that <code>.toc</code>'s box was going off of the viewport. This was happening because I gave <code>.content</code> left and right padding, which is not included in the actual dimensions of the box in the normal box model. The solution was using the alternative box model, <code>border-box</code>, which included padding in the actual dimensions of the box. This yielded the final rule of:</p>
+<pre data-lang="css" style="background-color:#0f1419;color:#bfbab0;" class="language-css "><code class="language-css" data-lang="css"><span style="color:#ffb454;">.content</span><span style="color:#bfbab0cc;">, </span><span style="color:#ffb454;">.toc </span><span>{
+</span><span>	</span><span style="color:#39bae6;">display</span><span style="color:#bfbab0cc;">: </span><span style="font-style:italic;color:#f29668;">inline-block</span><span style="color:#bfbab0cc;">;
+</span><span>	</span><span style="color:#39bae6;">box-sizing</span><span style="color:#bfbab0cc;">: </span><span style="font-style:italic;color:#f29668;">border-box</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span></code></pre>
+<p>The next challenge was fixing <code>.toc</code> to the side of the screen. This was easy with my newfound knowledge of positioning: set its position to <code>fixed</code>.</p>
+<h2 id="maintaining-markdown-styling">Maintaining Markdown styling</h2>
+<p>Zola uses Markdown files as a foundation for generating HTML. Markdown is a very useful, portable, and versatile format, allowing various styling options such as italicizing, bolding, code blocks, etc. When testing how Zola reflected the Markdown styling in the generated HTML, I realized that the generated pages were not styled properly. Thus, I had to manually style them. To figure out what tags Zola used for these styles, I had to manually build the site and inspect the generated files. I found that Zola wrapped italicized text in <code>&lt;em&gt;</code> tags, bolded text in <code>&lt;strong&gt;</code> tags, and code blocks in <code>&lt;code&gt;</code> tags. To apply the styles, I inserted the following rules:</p>
+<pre data-lang="css" style="background-color:#0f1419;color:#bfbab0;" class="language-css "><code class="language-css" data-lang="css"><span style="color:#59c2ff;">strong </span><span>{
+</span><span>	</span><span style="color:#39bae6;">font-weight</span><span style="color:#bfbab0cc;">: </span><span style="font-style:italic;color:#f29668;">bold</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span><span>
+</span><span style="color:#59c2ff;">em </span><span>{
+</span><span>	</span><span style="color:#39bae6;">font-weight</span><span style="color:#bfbab0cc;">: </span><span style="font-style:italic;color:#f29668;">italic</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span><span>
+</span><span style="color:#59c2ff;">code </span><span>{
+</span><span>	</span><span style="color:#39bae6;">background-color</span><span style="color:#bfbab0cc;">: </span><span style="font-style:italic;color:#f29668;">black</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span></code></pre>
+<p>For text wrapped in single backticks in Markdown, I wanted to style them with slightly rounded corners, and some left and right padding. Zola would wrap this text in a <code>&lt;code&gt;</code> tag. For text wrapped in triple backticks in Markdown, which is used for multi-line code blocks, Zola would also wrap it in a <code>&lt;code&gt;</code> tag wrapped in a <code>&lt;pre&gt;</code> tag. I did not want to give these <code>&lt;code&gt;</code> tags wrapped in a <code>&lt;pre&gt;</code> the left and right padding as it would mess with the alignment in the multi-line code blocks. To style only for <code>&lt;code&gt;</code> tags who were not direct children of <code>&lt;pre&gt;</code> tags, I leveraged CSS's powerful selection capabilities<sup class="footnote-reference" id="fr-4-1"><a href="#fn-4">4</a></sup>:</p>
+<pre data-lang="css" style="background-color:#0f1419;color:#bfbab0;" class="language-css "><code class="language-css" data-lang="css"><span style="color:#59c2ff;">code</span><span>:not(</span><span style="color:#59c2ff;">pre </span><span style="color:#bfbab0cc;">&gt; </span><span style="color:#59c2ff;">code</span><span>) {
+</span><span>	</span><span style="color:#39bae6;">padding</span><span style="color:#bfbab0cc;">: </span><span style="color:#f29718;">0</span><span style="color:#ff7733;">px </span><span style="color:#f29718;">5</span><span style="color:#ff7733;">px</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span></code></pre>
+<p>For some reason, Zola would generate HTML for multi-line code blocks that styled <code>&lt;code&gt;</code> with a black background, as you would expect, but would give <code>&lt;pre&gt;</code> tags a non-black background color via an inline style. Unfortunately, inline styles take precedence over those defined in external stylesheets (<code>.css</code> files). Luckily, CSS has a mechanism for indicating that a style should take priority in the cascade<sup class="footnote-reference" id="fr-5-1"><a href="#fn-5">5</a></sup>: the <code>!important</code> property. I just had to include this after I set the <code>background-color</code> property of <code>&lt;pre&gt;</code> tags:</p>
+<pre data-lang="css" style="background-color:#0f1419;color:#bfbab0;" class="language-css "><code class="language-css" data-lang="css"><span style="color:#59c2ff;">code</span><span style="color:#bfbab0cc;">, </span><span style="color:#59c2ff;">pre </span><span>{
+</span><span>	</span><span style="color:#39bae6;">background-color</span><span style="color:#bfbab0cc;">: </span><span style="font-style:italic;color:#f29668;">black </span><span style="color:#ff7733;">!important</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span></code></pre>
+<p>Next, I wanted to properly style footnotes. Zola would generate a <code>&lt;footer&gt;</code> tag with the class <code>footnotes</code> with an ordered list (<code>&lt;ol&gt;</code>) that contained the footnotes. By default, the font size was pretty large and links did not have underlines as I had globally set anchor tags (<code>&lt;a&gt;</code>) to have no underline. To alleviate this, I wrote the following rules:</p>
+<pre data-lang="css" style="background-color:#0f1419;color:#bfbab0;" class="language-css "><code class="language-css" data-lang="css"><span style="color:#ffb454;">.footnotes </span><span style="color:#59c2ff;">ol li </span><span>{
+</span><span>	</span><span style="color:#39bae6;">font-size</span><span style="color:#bfbab0cc;">: </span><span style="color:#f29718;">15</span><span style="color:#ff7733;">px</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span><span>
+</span><span style="color:#ffb454;">.footnotes </span><span style="color:#59c2ff;">ol li a </span><span>{
+</span><span>	</span><span style="color:#39bae6;">text-decoration</span><span style="color:#bfbab0cc;">: </span><span style="font-style:italic;color:#f29668;">underline</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span></code></pre>
+<p>I also realized that when I say used the table of contents to redirect to a section of the page, the heading would be covered by the header. Luckily, there is a special CSS property to deal with this: <code>scroll-padding-top</code>. I applied this property to the whole document:</p>
+<pre data-lang="css" style="background-color:#0f1419;color:#bfbab0;" class="language-css "><code class="language-css" data-lang="css"><span>:root {
+</span><span>	scroll-</span><span style="color:#39bae6;">padding-top</span><span style="color:#bfbab0cc;">: </span><span style="color:#f29718;">150</span><span style="color:#ff7733;">px</span><span style="color:#bfbab0cc;">;
+</span><span>}
+</span></code></pre>
+<h2 id="minor-problems">Minor Problems</h2>
+<p>I wanted footnotes to contain backlinks to where they originated from. Zola's <code>bottom_footnotes</code> config variable inserts these backlinks, generating anchored arrows. But, these arrows would not properly display on the webpage. All I had to do was ensure UTF-8 was being used for the HTML document, so I had to add: <code>&lt;meta charset="UTF-8"&gt;</code> inside of the HTML <code>&lt;head&gt;</code>.</p>
+<h1 id="deploying">Deploying</h1>
+<p>I decided to deploy using GitHub Pages. I just had to setup a simple Actions workflow which built the Zola site and put the build artifacts onto the <code>gh-pages</code> branch:</p>
+<pre data-lang="yaml" style="background-color:#0f1419;color:#bfbab0;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#f29718;">on</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">push
+</span><span style="color:#59c2ff;">name</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">Build and deploy site onto GitHub Pages
+</span><span>
+</span><span style="color:#59c2ff;">jobs</span><span style="color:#bfbab0cc;">:
+</span><span>  </span><span style="color:#59c2ff;">build</span><span style="color:#bfbab0cc;">:
+</span><span>      </span><span style="color:#59c2ff;">runs-on</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">ubuntu-latest
+</span><span>      </span><span style="color:#59c2ff;">if</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">github.ref == &#39;refs/heads/master&#39;
+</span><span>      </span><span style="color:#59c2ff;">steps</span><span style="color:#bfbab0cc;">:
+</span><span>        - </span><span style="color:#59c2ff;">name</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">checkout
+</span><span>          </span><span style="color:#59c2ff;">uses</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">actions/checkout@v4
+</span><span>        - </span><span style="color:#59c2ff;">name</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">build_and_deploy
+</span><span>          </span><span style="color:#59c2ff;">uses</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">shalzz/zola-deploy-action@master
+</span><span>          </span><span style="color:#59c2ff;">env</span><span style="color:#bfbab0cc;">:
+</span><span>              </span><span style="color:#59c2ff;">PAGES_BRANCH</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">gh-pages
+</span><span>              </span><span style="color:#59c2ff;">TOKEN</span><span style="color:#bfbab0cc;">: </span><span style="color:#c2d94c;">${{ secrets.GITHUB_TOKEN }}
+</span></code></pre>
+<p>On the first run, the deployment failed because <code>GITHUB_TOKEN</code>, an auto generated access token, did not have write privileges to the repository. I just had to go to the repository's <strong>settings &gt; actions &gt; general</strong> and check <strong>read and write permissions</strong> under <strong>workflow permissions</strong>.</p>
+<h1 id="takeaways">Takeaways</h1>
+<p>Although simple, I am very proud about how this turned out. I have learned so much more about how CSS works, specifically how elements are laid out and what "cascading" (CSS stands for <strong>cascading style sheets</strong>) actually means in practice. Reading documentation and extracting applicable information is a skill all programmers need, and I have certainly improved that skill. I also found that I was trying to fit unnecessary things into the scope of the project just because I wanted to; in short, I realized the backend was unnecessary and redundant. Always keep things simple.</p>
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>The inner display type determines how children elements are laid out. Read more <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model">here</a>. <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="fn-2">
+<p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">This</a> is the best reference I have found for flexbox. The <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox#the_flex_model">MDN web docs page</a> is also great. <a href="#fr-2-1">↩</a></p>
+</li>
+<li id="fn-3">
+<p>Read more about positioning <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Positioning">here</a>. <a href="#fr-3-1">↩</a></p>
+</li>
+<li id="fn-4">
+<p>Read more about CSS selectors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">here</a>. <a href="#fr-4-1">↩</a></p>
+</li>
+<li id="fn-5">
+<p>The cascade decides what styles take precedence when multiple are defined on an element. Read more <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Cascade">here</a>. <a href="#fr-5-1">↩</a></p>
+</li>
+</ol>
+</section>
+
+</div>
+
+<div class="toc">
+  <h2 id="toc-name">Table of Contents</h2>
+  <ul>
+  
+    <li>
+      <a href="https://mkflan.github.io/posts/developing-my-blog-website/#planning"><p>Planning</p></a>
+    </li>
+  
+    <li>
+      <a href="https://mkflan.github.io/posts/developing-my-blog-website/#styling-challenges"><p>Styling Challenges</p></a>
+    </li>
+  
+    <li>
+      <a href="https://mkflan.github.io/posts/developing-my-blog-website/#deploying"><p>Deploying</p></a>
+    </li>
+  
+    <li>
+      <a href="https://mkflan.github.io/posts/developing-my-blog-website/#takeaways"><p>Takeaways</p></a>
+    </li>
+  
+  </ul>
+</div>
+
+  </main>
+</body>
+</html>
