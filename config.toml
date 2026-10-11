@@ -7,9 +7,10 @@ generate_sitemap = false
 generate_robots_txt = false
 
 [markdown]
-highlight_code = true        # Enable syntax highlighting for code blocks
 bottom_footnotes = true      # Place footnotes at the bottom, with back references
-highlight_theme = "ayu-dark" # Set the code block highlighting theme
+
+[markdown.highlighting]
+theme = "ayu-dark"           # Syntax highlighting theme for code blocks
 
 [extra]
 theme = "editorial"       # editorial | technical | midnight | sage
