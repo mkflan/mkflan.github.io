@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% set theme = config.extra.theme | default(value="editorial") %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,21 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ get_url(path='css/base.css') }}">
-  <link rel="stylesheet" id="theme-css" href="{{ get_url(path='css/themes/' ~ theme ~ '.css') }}">
+  <link rel="stylesheet" href="{{ get_url(path='css/style.css') }}">
   <script src="https://kit.fontawesome.com/4f95b5974a.js" crossorigin="anonymous"></script>
-  {% if config.extra.theme_switcher %}
-  <script>
-    // Preview-only: remember the chosen theme and swap its stylesheet before first paint.
-    try {
-      var t = localStorage.getItem("theme");
-      if (t) {
-        document.getElementById("theme-css").href = "{{ get_url(path='css/themes/x.css') | replace(from='x.css', to='') | safe }}" + t + ".css";
-        document.documentElement.dataset.theme = t;
-      }
-    } catch (e) {}
-  </script>
-  {% endif %}
 </head>
 <body>
   <header class="site-header">
@@ -38,31 +24,5 @@
   <main>
     {% block content %}{% endblock content %}
   </main>
-
-  {% if config.extra.theme_switcher %}
-  <div class="theme-switcher" role="group" aria-label="Preview theme">
-    {% for name in ["editorial", "technical", "technical-dark", "midnight", "walnut"] %}
-    <button type="button" data-theme="{{ name }}">{{ name }}</button>
-    {% endfor %}
-  </div>
-  <script>
-    (function () {
-      var base = "{{ get_url(path='css/themes/x.css') | replace(from='x.css', to='') | safe }}";
-      var current = "{{ theme }}";
-      try { current = localStorage.getItem("theme") || current; } catch (e) {}
-      document.querySelectorAll(".theme-switcher button").forEach(function (b) {
-        b.setAttribute("aria-pressed", b.dataset.theme === current);
-        b.addEventListener("click", function () {
-          document.getElementById("theme-css").href = base + b.dataset.theme + ".css";
-          document.documentElement.dataset.theme = b.dataset.theme;
-          try { localStorage.setItem("theme", b.dataset.theme); } catch (e) {}
-          document.querySelectorAll(".theme-switcher button").forEach(function (o) {
-            o.setAttribute("aria-pressed", o === b);
-          });
-        });
-      });
-    })();
-  </script>
-  {% endif %}
 </body>
 </html>
