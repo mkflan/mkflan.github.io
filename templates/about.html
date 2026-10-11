@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page about">
+  <h1 class="page-title">About me</h1>
+  <p>
+    Hello there! I'm Kai, a first-year at UT Austin studying Electrical & Computer Engineering. My passions lies at the intersection of hardware, software, and computer security, from computer architecture to operating systems. Outside of this, I enjoy reading, watching movies, and playing basketball.
+  </p>
+
+  <div class="icons">
+    <a href="https://github.com/mkflan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/mkflan/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="{{ get_url(path='rss.xml') }}" aria-label="RSS feed"><i class="fa-solid fa-rss"></i></a>
+  </div>
+</div>
+{% endblock content %}

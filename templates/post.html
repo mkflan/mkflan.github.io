@@ -1,22 +1,59 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="content">
-  <div class="post-header">
-    <h1 class="larger">{{ page.title }}</h1>
-    <p><em>Published {{ page.date | date(format="%B %d, %Y")}}</em></p>
-  </div>
-  {{ page.content | safe }}
+<div class="post-layout">
+  <article class="content">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-meta">Published <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time></p>
+    </header>
+    {{ page.content | safe }}
+  </article>
+
+  {% if page.toc %}
+  <aside class="toc">
+    <h2 class="toc-name">On this page</h2>
+    <ul>
+    {% for h in page.toc %}
+      <li>
+        <a href="{{ h.permalink | safe }}">{{ h.title }}</a>
+        {% if h.children %}
+        <ul>
+          {% for c in h.children %}
+          <li><a href="{{ c.permalink | safe }}">{{ c.title }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </aside>
+  {% endif %}
 </div>
 
-<div class="toc">
-  <h2 id="toc-name">Table of Contents</h2>
-  <ul>
-  {% for h1 in page.toc %}
-    <li>
-      <a href="{{ h1.permalink | safe }}"><p>{{ h1.title }}</p></a>
-    </li>
-  {% endfor %}
-  </ul>
-</div>
+<script>
+  // Highlight the table-of-contents entry for the section currently being read.
+  (function () {
+    var links = {};
+    document.querySelectorAll(".toc a").forEach(function (a) {
+      links[a.hash.slice(1)] = a;
+    });
+    var heads = Array.prototype.filter.call(
+      document.querySelectorAll(".content :is(h1, h2, h3)[id]"),
+      function (h) { return links[h.id]; }
+    );
+    if (!heads.length) return;
+    function update() {
+      var current = heads[0];
+      heads.forEach(function (h) {
+        if (h.getBoundingClientRect().top <= window.innerHeight * 0.25) current = h;
+      });
+      Object.keys(links).forEach(function (id) {
+        links[id].classList.toggle("active", id === current.id);
+      });
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  })();
+</script>
 {% endblock content %}

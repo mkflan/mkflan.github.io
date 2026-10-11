@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page and page.title %}{{ page.title }} · {% endif %}kai's blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_url(path='css/style.css') }}">
   <script src="https://kit.fontawesome.com/4f95b5974a.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <a href="{{ get_url(path='') }}"><h1>kai's blog</h1></a>
-
-    <nav>
-      <a href="{{ get_url(path='aboutme.html') }}"><h2>about me</h2></a>
-    </nav>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="{{ get_url(path='') }}">kai's blog</a>
+      <nav>
+        <a href="{{ get_url(path='') }}">posts</a>
+        <a href="{{ get_url(path='aboutme.html') }}">about</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    {% block content %} {% endblock content %}
+    {% block content %}{% endblock content %}
   </main>
 </body>
 </html>
