@@ -14,5 +14,5 @@ bottom_footnotes = true      # Place footnotes at the bottom, with back referenc
 theme = "ayu-dark"           # Syntax highlighting theme for code blocks
 
 [extra]
-theme = "editorial"       # editorial | technical | midnight | sage
+theme = "editorial"       # editorial | technical | midnight | walnut
 theme_switcher = true     # Preview-only floating theme picker; set to false once a theme is chosen

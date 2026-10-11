@@ -1,0 +1,36 @@
+/* Walnut: parchment page, deep walnut header, warm brown accents. Serif headings over a clean sans body. */
+:root {
+  --bg: #f4efe7;
+  --surface: #ebe3d7;
+  --text: #2c211a;
+  --muted: #7d6c5d;
+  --accent: #8a5a3a;
+  --border: #dfd3c3;
+  --code-bg: #261b15;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Newsreader", Georgia, serif;
+  --measure: 40rem;
+  --radius: 8px;
+}
+body { font-size: 1.02rem; line-height: 1.75; }
+
+/* Dark walnut header band */
+.site-header { background: #2f2119; border-bottom: 0; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
+.site-title { color: #f4efe7; font-size: 1.35rem; font-weight: 500; }
+.site-title:hover { color: #d9b48f; }
+.site-header nav a { color: #bfae9b; }
+.site-header nav a:hover { color: #f4efe7; }
+
+.post-title, .page-title { font-weight: 500; letter-spacing: -0.01em; }
+.post-title { font-size: 2.7rem; }
+.content h1, .content h2, .content h3 { font-weight: 500; }
+.content h1 { font-size: 1.8rem; }
+.content strong { color: #1f1611; }
+.content blockquote { background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; padding: 0.5rem 1.25rem; }
+
+.toc { padding: 1.1rem 1.1rem 1.1rem 1.25rem; background: var(--surface); border-radius: var(--radius); }
+.toc a { border-left-color: #cfc0ac; }
+.toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+
+.post-list a:hover .post-link-title { color: var(--accent); }
+::selection { background: rgba(138, 90, 58, 0.25); }

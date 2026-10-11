@@ -7,7 +7,7 @@
   <title>{% if page and page.title %}{{ page.title }} · {% endif %}kai's blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Quicksand:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_url(path='css/base.css') }}">
   <link rel="stylesheet" id="theme-css" href="{{ get_url(path='css/themes/' ~ theme ~ '.css') }}">
   <script src="https://kit.fontawesome.com/4f95b5974a.js" crossorigin="anonymous"></script>
@@ -41,7 +41,7 @@
 
   {% if config.extra.theme_switcher %}
   <div class="theme-switcher" role="group" aria-label="Preview theme">
-    {% for name in ["editorial", "technical", "midnight", "sage"] %}
+    {% for name in ["editorial", "technical", "midnight", "walnut"] %}
     <button type="button" data-theme="{{ name }}">{{ name }}</button>
     {% endfor %}
   </div>
