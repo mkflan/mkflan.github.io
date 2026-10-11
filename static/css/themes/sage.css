@@ -1,0 +1,25 @@
+/* Sage: light and friendly. Cool off-white, rounded Quicksand, olive accent, card-style TOC on the right. */
+:root {
+  --bg: #f7f8f5;
+  --surface: #eef0ea;
+  --text: #272b26;
+  --muted: #6b7266;
+  --accent: #5b6b34;
+  --border: #dfe3d8;
+  --code-bg: #232823;
+  --font-body: "Quicksand", system-ui, sans-serif;
+  --font-heading: "Quicksand", system-ui, sans-serif;
+  --measure: 38rem;
+  --radius: 10px;
+}
+body { font-size: 1.1rem; line-height: 1.75; font-weight: 500; }
+.site-title, .post-title, .page-title, .content h1, .content h2, .content h3 { font-weight: 700; }
+.post-title { font-size: 2.5rem; }
+.content strong { font-weight: 700; }
+.toc { padding: 1.1rem 1.1rem 1.1rem 1.25rem; background: var(--surface); border-radius: var(--radius); }
+.toc a { border-left: 0; padding-left: 0.5rem; }
+.toc a.active { color: var(--accent); font-weight: 700; }
+.post-list li { border: 0; }
+.post-list li:last-child { border: 0; }
+.post-list a { padding: 1rem 1.25rem; margin-bottom: 0.6rem; background: var(--surface); border-radius: var(--radius); }
+.post-list a:hover { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }

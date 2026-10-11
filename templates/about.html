@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page about">
+  <h1 class="page-title">About me</h1>
+  <p>
+    Hello world! My name is Kai and I am a high school senior. My programming journey started with Python in 6th grade. I am most proficient with Python and Rust, with some experience in C and various other languages. My areas of interest are cybersecurity, operating systems, computer architecture, and embedded. Some of my other hobbies are basketball, photography, reading, gaming, and chess.
+  </p>
+
+  <div class="icons">
+    <a href="https://github.com/mkflan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="{{ get_url(path='rss.xml') }}" aria-label="RSS feed"><i class="fa-solid fa-rss"></i></a>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+/* Midnight: soft charcoal (not black), warm gray text, olive-green accent. TOC on the right. */
+:root {
+  --bg: #17191b;
+  --surface: #1f2224;
+  --text: #dcd9d2;
+  --muted: #8d8f8a;
+  --accent: #a3b57a;
+  --border: #2d3134;
+  --code-bg: #101213;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --measure: 40rem;
+  color-scheme: dark;
+}
+body { font-size: 1.02rem; line-height: 1.75; }
+.site-header { background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); }
+.post-title, .page-title, .content h1, .content h2, .content h3 { letter-spacing: -0.015em; font-weight: 600; }
+.post-title { font-size: 2.3rem; }
+.content strong { color: #efece5; }
+.toc a.active { color: var(--accent); }
+.post-list a:hover .post-link-title { color: var(--accent); }
+::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }

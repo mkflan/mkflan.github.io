@@ -1,0 +1,36 @@
+/* Technical: cool light gray, Inter + mono, navy accent. TOC as a left sidebar. */
+:root {
+  --bg: #f6f7f8;
+  --surface: #eceef0;
+  --text: #1c2127;
+  --muted: #5f6b77;
+  --accent: #1f3f6e;
+  --border: #dde1e5;
+  --code-bg: #1b2430;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --measure: 42rem;
+  --toc-width: 15rem;
+  --radius: 4px;
+}
+body { font-size: 1rem; line-height: 1.75; }
+.site-title { font-family: "JetBrains Mono", monospace; font-size: 1rem; letter-spacing: -0.02em; }
+.post-title, .page-title, .content h1, .content h2, .content h3 { letter-spacing: -0.02em; font-weight: 600; }
+.post-title { font-size: 2.2rem; }
+.post-meta, .post-list time { font-family: "JetBrains Mono", monospace; font-size: 0.8rem; }
+
+.post-layout {
+  grid-template-columns: var(--toc-width) minmax(0, 1fr);
+  grid-template-areas: "toc content";
+  gap: 3.5rem;
+}
+.toc { padding-right: 1.5rem; border-right: 1px solid var(--border); }
+.toc a { border-left: 0; padding-left: 0.6rem; border-radius: 4px; }
+.toc a:hover { background: var(--surface); }
+.toc a.active { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+.toc ul ul { margin-left: 0.6rem; }
+
+@media (max-width: 900px) {
+  .post-layout { grid-template-areas: "toc" "content"; grid-template-columns: minmax(0, 1fr); }
+  .toc { padding-right: 1.25rem; border-right: 1px solid var(--border); }
+}

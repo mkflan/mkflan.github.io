@@ -10,3 +10,7 @@ generate_robots_txt = false
 highlight_code = true        # Enable syntax highlighting for code blocks
 bottom_footnotes = true      # Place footnotes at the bottom, with back references
 highlight_theme = "ayu-dark" # Set the code block highlighting theme
+
+[extra]
+theme = "editorial"       # editorial | technical | midnight | sage
+theme_switcher = true     # Preview-only floating theme picker; set to false once a theme is chosen

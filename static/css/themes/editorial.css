@@ -1,0 +1,19 @@
+/* Editorial: warm paper, serif reading text, walnut accent. TOC on the right. */
+:root {
+  --bg: #faf8f4;
+  --surface: #f1ede6;
+  --text: #2a2623;
+  --muted: #7a726a;
+  --accent: #6b4a32;
+  --border: #e5dfd5;
+  --code-bg: #26221f;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-heading: "Newsreader", Georgia, serif;
+  --measure: 38rem;
+}
+body { font-size: 1.2rem; line-height: 1.65; }
+.site-header nav a, .toc, .post-meta, .post-list time, .toc-name { font-family: "Inter", system-ui, sans-serif; }
+.site-title { font-size: 1.35rem; }
+.post-title { font-size: 2.8rem; font-weight: 500; }
+.content h1, .content h2, .content h3, .page-title { font-weight: 500; }
+.toc { font-size: 0.85rem; }
