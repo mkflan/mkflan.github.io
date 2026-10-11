@@ -94,7 +94,7 @@ jobs:
           uses: shalzz/zola-deploy-action@master
           env:
               PAGES_BRANCH: gh-pages
-              TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              TOKEN: ${% raw %}{{ secrets.GITHUB_TOKEN }}{% endraw %}
 ```
 
 On the first run, the deployment failed because `GITHUB_TOKEN`, an auto generated access token, did not have write privileges to the repository. I just had to go to the repository's **settings > actions > general** and check **read and write permissions** under **workflow permissions**. 
