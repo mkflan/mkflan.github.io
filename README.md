@@ -19,6 +19,10 @@ Posts with the same series name are grouped automatically and ordered by `date`.
 
 The `demo-emulator-*.md` posts are drafts that show the feature. Preview them locally with `zola serve --drafts`; they are left out of normal builds. Delete them before or after merging.
 
+## Windows
+
+Install Zola with `winget install getzola.zola` (or `scoop install zola` / `choco install zola`) and Python with `winget install Python.Python.3.12`, then open a new terminal. Use `py` in place of `python3` (for example `py tools\\obsidian_to_zola.py "My Note.md"`). Preview with `zola serve --drafts`.
+
 ## Writing posts in Obsidian
 
 `tools/obsidian_to_zola.py` turns one Obsidian note into a Zola post (Python 3, no dependencies).

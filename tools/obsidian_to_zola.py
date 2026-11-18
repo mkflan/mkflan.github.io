@@ -192,6 +192,8 @@ class Converter:
 # ------------------------------------------------------------------------- main
 
 def main():
+    if hasattr(sys.stdout, "reconfigure"):  # Windows consoles default to a legacy code page
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description="Convert one Obsidian note into a Zola post.")
     ap.add_argument("note", type=Path, help="the Obsidian note (.md)")
     ap.add_argument("--dry-run", action="store_true", help="print the post instead of writing files")
@@ -232,7 +234,8 @@ def main():
     else:
         existed = dest.exists()
         POSTS.mkdir(parents=True, exist_ok=True)
-        dest.write_text(post, encoding="utf-8")
+        with open(dest, "w", encoding="utf-8", newline="\n") as f:  # LF endings, even on Windows
+            f.write(post)
         for src, img_dest in conv.images:
             img_dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, img_dest)
