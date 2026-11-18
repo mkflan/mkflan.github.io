@@ -10,6 +10,7 @@
       <a href="{{ post.permalink | safe }}">
         <time datetime="{{ post.date }}">{{ post.date | date(format="%b %d, %Y") }}</time>
         <span class="post-link-title">{{ post.title }}</span>
+        {% if post.taxonomies.series %}<span class="post-series">{{ post.taxonomies.series[0] }}</span>{% endif %}
       </a>
     </li>
     {% endfor %}

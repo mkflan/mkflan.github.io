@@ -7,6 +7,9 @@ feed_filenames = ["rss.xml"]
 generate_sitemap = false
 generate_robots_txt = false
 
+# Posts opt in to a series with `[taxonomies] series = ["Series name"]` in their front matter.
+taxonomies = [{ name = "series" }]
+
 [markdown]
 bottom_footnotes = true      # Place footnotes at the bottom, with back references
 

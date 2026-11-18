@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+  <p class="eyebrow"><a href="{{ get_url(path='series/') }}">Series</a></p>
+  <h1 class="page-title">{{ term.name }}</h1>
+  <ol class="series-list">
+    {% for p in term.pages | sort(attribute="date") %}
+    <li>
+      <a href="{{ p.permalink | safe }}">
+        <time datetime="{{ p.date }}">{{ p.date | date(format="%b %d, %Y") }}</time>
+        <span class="post-link-title">{{ p.title }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+{% endblock content %}

@@ -16,6 +16,8 @@
       <a class="site-title" href="{{ get_url(path='') }}">kai's blog</a>
       <nav>
         <a href="{{ get_url(path='') }}">posts</a>
+        {% set series_taxonomy = get_taxonomy(kind="series") %}
+        {% if series_taxonomy.items | length %}<a href="{{ get_url(path='series/') }}">series</a>{% endif %}
         <a href="{{ get_url(path='aboutme.html') }}">about</a>
       </nav>
     </div>
