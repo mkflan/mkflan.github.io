@@ -21,7 +21,7 @@ The `demo-emulator-*.md` posts are drafts that show the feature. Preview them lo
 
 ## Windows
 
-Install Zola with `winget install getzola.zola` (or `scoop install zola` / `choco install zola`) and Python with `winget install Python.Python.3.12`, then open a new terminal. Use `py` in place of `python3` (for example `py tools\\obsidian_to_zola.py "My Note.md"`). Preview with `zola serve --drafts`.
+Install Zola with `winget install getzola.zola` (or `scoop install zola` / `choco install zola`) and Python with `winget install Python.Python.3.12`, then open a new terminal. Use `py` in place of `python3` (for example `py tools\obsidian_to_zola.py "My Note.md"`). Preview with `zola serve --drafts`.
 
 ## Writing posts in Obsidian
 
