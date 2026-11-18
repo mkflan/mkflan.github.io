@@ -312,3 +312,10 @@ code:not(pre > code) { background: #33261e; border-color: #46362b; }
   .series-pager { flex-direction: column; }
   .series-pager a { max-width: none; }
 }
+
+mark {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  color: inherit;
+  padding: 0.05em 0.2em;
+  border-radius: 3px;
+}
